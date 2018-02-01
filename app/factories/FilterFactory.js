@@ -1,2 +1,4 @@
 'use strict'; 
-angular.module('');
+angular.module("Winterest").factory("FilterFactory", function ($scope) {
+
+});
