@@ -1,6 +1,8 @@
 'use strict'; 
 
-// DISPLAY ALL IMAGES
+angular.module("Winterest").controller("ImgListCtrl", function ($scope) {
+    $scope.title = "Image List";
+    // DISPLAY ALL IMAGES
 // call image factory and get all images, set image array to scope variable
 
 // GET ALL OF THE USER'S BOARDS --> this will be in the modal
@@ -12,5 +14,4 @@
 // grabs image id and board id
 // assembles pin object
 // calls image factory to post pin
-
-
+});
