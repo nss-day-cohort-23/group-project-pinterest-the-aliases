@@ -9,6 +9,11 @@ function postImage(){
   // return a promise to post an image to the IMAGES colletion in firebase
 }
 
+function pinImage(pinObject){
+// returns a promise that posts the given pin object to the PINS collection in firebase
+// pin objects will have a board id and an img id
+}
+
 function getAllBoards(uid){
   // returns a promise that queries firebase for boards that match the given user id
 }
@@ -30,6 +35,7 @@ function getBoard(boardId){
 
 }
 
+
 // this function will not be exported- it's internal and will be called in the getBoard function
 function getPinnedImages(imgId){
   // returns a promise that queries the IMAGES collection for images that match the given image id
@@ -47,6 +53,10 @@ function deletePin(id){
   // returns a promise that deletes the given pin
 }
 
+// this will be an internal function to convert whatever objecty things we get back from firebase and resolve it as an array
+function convertToArray(){
+// converts an object of objects to an array of objects
+}
 
 
-return {getAllImages, postImage, getAllBoards, getBoard, deleteBoard, deletePin};
+return {getAllImages, pinImage, postImage, getAllBoards, getBoard, deleteBoard, deletePin};
