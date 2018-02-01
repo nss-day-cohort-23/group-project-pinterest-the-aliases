@@ -4,10 +4,6 @@ angular.module("Winterest", ["ngRoute"])
     .constant("FBUrl", "https://the-aliases.firebaseio.com/")
      .config(($routeProvider) => {
         $routeProvider
-        .when("/login", {
-            templateUrl: "partials/UserForm.html",
-            controller: "LoginCtrl"
-        })
         .when("/images", {
             templateUrl: "partials/ImageList.html",
             controller: "ImgListCtrl"
@@ -25,7 +21,7 @@ angular.module("Winterest", ["ngRoute"])
             controller: "AddBoardCtrl"
         })
         .when("/boards/:boardId", {
-            templateUrl: "partials/UserForm.html",
+            templateUrl: "partials/ImageList.html",
             controller: "BoardCtrl"
         })
         .otherwise("/", {

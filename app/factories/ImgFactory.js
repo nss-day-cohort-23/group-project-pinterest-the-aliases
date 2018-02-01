@@ -14,6 +14,10 @@ angular.module("Winterest").factory("ImgFactory", function ($scope) {
     // pin objects will have a board id and an img id
   }
 
+  function addBoard(boardObject){
+    // posts board object to BOARDS collection in firebaes
+  }
+
   function getAllBoards(uid) {
     // returns a promise that queries firebase for boards that match the given user id
   }
@@ -39,6 +43,10 @@ angular.module("Winterest").factory("ImgFactory", function ($scope) {
   // this function will not be exported- it's internal and will be called in the getBoard function
   function getPinnedImages(imgId) {
     // returns a promise that queries the IMAGES collection for images that match the given image id
+  }
+
+  function editBoard (boardId, editObject){
+    // sends updated object to firebase with a put 
   }
 
   function deleteBoard(boardId) {
