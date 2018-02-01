@@ -1,9 +1,11 @@
 'use strict'; 
 
-//call Image factory to get all boards
 
-//ImgFactory.getAllBoards()
-// .then( 
-  // should return an array of boards
-// set scope variable to boards array)
-// })
+// DISPLAY BOARDS
+//call Image factory to get all boards, then set boards as a scope variable
+
+// LOAD INDIVIDUAL BOARD WHEN YOU CLICK ON A BOARD
+// grab board id
+// load route to single board view when you click on a board
+
+
