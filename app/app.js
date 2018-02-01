@@ -16,13 +16,17 @@ angular.module("Winterest", ["ngRoute"])
             templateUrl: "partials/BoardsList.html",
             controller: "BoardsListCtrl"
         })
-        .when("/new", {
+        .when("/newimage", {
             templateUrl: "partials/AddContent.html",
             controller: "AddImgCtrl"
         })
+        .when("/newboard", {
+            templateUrl: "partials/AddContent.html",
+            controller: "AddBoardCtrl"
+        })
         .when("/boards/:boardId", {
             templateUrl: "partials/UserForm.html",
-            controller: "BoardCtrl.js"
+            controller: "BoardCtrl"
         })
         .otherwise("/", {
             templateUrl: "partials/ImageList.html",
