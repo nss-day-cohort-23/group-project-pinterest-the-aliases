@@ -23,49 +23,32 @@ angular.module("Winterest").factory("ImgFactory", function (FBUrl, $q, $http) {
   }
 
   function getPinList(boardId) {
-    let imageArray = [];
+    let imageArray = []; // empty arr to store image objects
     return $q((resolve, reject) => {
       $http
         .get(`${FBUrl}pins.json?orderBy="boardId"&equalTo="${boardId}"`)
         .then(({ data }) => { 
-          console.log("this is the data", data);
           let pinIds = Object.keys(data);
-          console.log(pinIds);
           pinIds.forEach((pinId) => {
             getPinnedImages(pinId.imgId)
             .then(imageObj => {
               imageArray.push(imageObj);
             });
           });
-          console.log("this should be an array of image objects", imageArray);
           resolve (imageArray);
         })
         .catch ((error) => {
           console.log("totally didn't work", error);
         });
       });
-    // returns a promise that queries firebase for pins that match the given board id
-    // this will query the PIN collection 
-    // it should return a list of pins
-    // loop through the pins and pass each individual pin into the getPinnedImages function
-    // this function should resolve image objects 
-
-    // EXAMPLE
-    // pins.forEach((pin) => {
-    //  getPinnedImages(pin.imgId)
-    // .then ((image) =>{
-    // push images into an array and resolve an array of images?
-    // })
-    // })
-
   }
 
+  // this is an internal function called within get pin list
   function getPinnedImages(imageId) {
     return $q((resolve, reject) => {
       $http
         .get(`${FBUrl}images/image9.json`)
         .then(({ data }) => {
-          console.log("there probably won't be anything here", data);
           resolve(data);
         })
         .catch((error) => {
