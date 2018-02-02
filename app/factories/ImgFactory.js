@@ -3,6 +3,12 @@ angular.module("Winterest").factory("ImgFactory", function (FBUrl, $q, $http) {
 
   function getAllImages() {
     // returns a promise for all images from the IMAGES collection in firebase
+    return $q((resolve,reject) => {
+      $http.get(`${FBUrl}/images.json`)
+      .then(({ data }) => {
+        resolve(Object.values(data));
+      });
+    });
   }
 
   function post(item) {
