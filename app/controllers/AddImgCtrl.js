@@ -1,6 +1,6 @@
 'use strict'; 
 
-angular.module("Winterest").controller("AddImgCtrl", function ($scope) {
+angular.module("Winterest").controller("AddImgCtrl", function ($scope, ImgFactory, $location) {
   $scope.title = "Add Image";
   $scope.inputOne = "Image Title";
   $scope.placeHolderOne = "Nicholas Cage With Long Hair";
@@ -13,7 +13,21 @@ angular.module("Winterest").controller("AddImgCtrl", function ($scope) {
     return true;
   };
 
- // grabs url and description from dom
- // assembles image object
- // passes to firebase
+  // grabs url and description from dom
+  // assembles image object
+  $scope.item = {
+    url: "",
+    description: "",
+    title: ""
+  };
+  
+  // passes to firebase
+  $scope.saveItem = () => {
+    console.log('New image to add', $scope.item);
+    ImgFactory.post($scope.item)
+    .then( (data) => {
+      $location.url("/images");
+    });
+  };
+
 });
