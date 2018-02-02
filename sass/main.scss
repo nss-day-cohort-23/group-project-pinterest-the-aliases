@@ -1,14 +1,25 @@
 nav {
   margin-top: 0;
-  background: lightgrey;
+  background: #76e9d8;
   padding: 2vh 0;
 }
 
 #navTitle {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 }
   
 .add-content-form{
   width: 60vw;
   margin: 2rem;
+}
+
+.nav-link {
+  padding-left: 1vw;
+  padding-right: 1vw;
+  font-size: 0.9rem;
+}
+
+.input {
+  width: 45%;
+  margin-right: 2vw;
 }
