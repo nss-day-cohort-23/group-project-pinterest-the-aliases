@@ -16,4 +16,5 @@ angular.module("Winterest").controller("NavCtrl", function ($scope) {
     // Check if user is logged in
     // return true if logged in
     // return false if not
+
 });
