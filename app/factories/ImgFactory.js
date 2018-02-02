@@ -23,13 +23,12 @@ angular.module("Winterest").factory("ImgFactory", function (FBUrl, $http, $q) {
     return $q((resolve, reject) => {
       $http
         .get(`${FBUrl}/boards.json?orderBy="uid"&equalTo="${uid}"`)
-        .then(data => {
-          console.log("data", data);
-          resolve(data);
-        })
-        .catch(error => {
-          console.log("error", error);
-          reject(error);
+        .then(({data}) => {
+          let boardsArr = Object.keys(data).map(boardKey => {
+            data[boardKey].id = boardKey;
+            return(data[boardKey]);
+          });
+          resolve(boardsArr);
         });
     });
   }
