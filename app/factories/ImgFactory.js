@@ -1,5 +1,5 @@
 'use strict'; 
-angular.module("Winterest").factory("ImgFactory", function ($q, $http, FBUrl) {
+angular.module("Winterest").factory("ImgFactory", function (FBUrl, $q, $http) {
 
   function getAllImages() {
     // returns a promise for all images from the IMAGES collection in firebase
@@ -11,9 +11,21 @@ angular.module("Winterest").factory("ImgFactory", function ($q, $http, FBUrl) {
     });
   }
 
-  function postImage() {
+  function post(item) {
     // return a promise to post an image to the IMAGES colletion in firebase
-  }
+      return $q((resolve, reject) => {
+        $http
+          .post(`${FBUrl}/images.json`, JSON.stringify(item))
+          .then(data => {
+            console.log("New Image posted");
+            resolve(data);
+          })
+          .catch(error => {
+            console.log(error);
+            reject(error);
+          });
+      });
+    }
 
   function pinImage(pinObject) {
     // returns a promise that posts the given pin object to the PINS collection in firebase
@@ -72,6 +84,6 @@ angular.module("Winterest").factory("ImgFactory", function ($q, $http, FBUrl) {
     // converts an object of objects to an array of objects
   }
 
-  return { getAllImages, postImage, pinImage, addBoard, getAllBoards, getBoard, editBoard, deleteBoard, deletePin };
+  return { getAllImages, post, pinImage, addBoard, getAllBoards, getBoard, editBoard, deleteBoard, deletePin };
 
 });
