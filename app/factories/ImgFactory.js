@@ -11,11 +11,11 @@ angular.module("Winterest").factory("ImgFactory", function (FBUrl, $q, $http) {
     });
   }
 
-  function post(item) {
+  function post(item, location) {
     // return a promise to post an image to the IMAGES colletion in firebase
       return $q((resolve, reject) => {
         $http
-          .post(`${FBUrl}/images.json`, JSON.stringify(item))
+          .post(`${FBUrl}/${location}.json`, JSON.stringify(item))
           .then(data => {
             console.log("New Image posted");
             resolve(data);
@@ -58,9 +58,9 @@ angular.module("Winterest").factory("ImgFactory", function (FBUrl, $q, $http) {
         .get(`${FBUrl}pins.json?orderBy="boardId"&equalTo="${boardId}"`)
         .then(({ data }) => { 
           for (let pin in data){
-            console.log(data[pin].imgId);
             getPinnedImages(data[pin].imgId)
               .then(imageObj => {
+                // imgObj.id = firebase id
                 imageArray.push(imageObj);
               });
             }
@@ -74,7 +74,6 @@ angular.module("Winterest").factory("ImgFactory", function (FBUrl, $q, $http) {
 
   // this is an internal function called within get pin list
   function getPinnedImages(imageId) {
-    console.log("this should be image 0", imageId);
     return $q((resolve, reject) => {
       $http
         .get(`${FBUrl}images/${imageId}.json`)
