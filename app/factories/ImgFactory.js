@@ -38,6 +38,17 @@ angular.module("Winterest").factory("ImgFactory", function (FBUrl, $q, $http) {
 
   function getAllBoards(uid) {
     // returns a promise that queries firebase for boards that match the given user id
+    return $q((resolve, reject) => {
+      $http
+        .get(`${FBUrl}/boards.json?orderBy="uid"&equalTo="${uid}"`)
+        .then(({data}) => {
+          let boardsArr = Object.keys(data).map(boardKey => {
+            data[boardKey].id = boardKey;
+            return(data[boardKey]);
+          });
+          resolve(boardsArr);
+        });
+    });
   }
 
   function getPinList(boardId) {
