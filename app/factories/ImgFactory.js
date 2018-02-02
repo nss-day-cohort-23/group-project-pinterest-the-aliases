@@ -1,9 +1,5 @@
 'use strict'; 
-<<<<<<< HEAD
-angular.module("Winterest").factory("ImgFactory", function (FBUrl, $http, $q) {
-=======
 angular.module("Winterest").factory("ImgFactory", function (FBUrl, $q, $http) {
->>>>>>> master
 
   function getAllImages() {
     // returns a promise for all images from the IMAGES collection in firebase
