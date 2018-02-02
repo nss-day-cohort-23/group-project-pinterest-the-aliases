@@ -1,1 +1,45 @@
-<h1>This is the {{title}} page</h1>
+
+<section class="hero is-primary">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">{{title}}</h1>
+    </div>
+  </div>
+</section>
+
+
+<div class="level">
+  <div class="level-item has-text-centered">
+    <div class = "box add-content-form">
+
+      <div class="field">
+        <label class="label">{{inputOne}}</label>
+        <div class="control">
+          <input class="input" type="text" placeholder={{placeHolderOne}}>
+        </div>
+      </div>
+      
+      <div class="field">
+        <label class="label">{{inputTwo}}</label>
+        <div class="control">
+          <textarea class="textarea" placeholder={{placeHolderTwo}}></textarea>
+        </div>
+      </div>
+
+      <!-- only shows if you're adding an image -->
+      <div class="field" ng-show = "addImagePage()">
+        <label class="label">Image URL</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Paste URL to image here!">
+        </div>
+      </div>
+      <!-- end hide/ show  url div -->
+
+      <div class="control">
+        <button class="button is-primary">{{buttonName}}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
