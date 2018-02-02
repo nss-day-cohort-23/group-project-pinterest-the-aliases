@@ -47,7 +47,7 @@ angular.module("Winterest").factory("ImgFactory", function (FBUrl, $q, $http) {
   function getPinnedImages(imageId) {
     return $q((resolve, reject) => {
       $http
-        .get(`${FBUrl}images/image9.json`)
+        .get(`${FBUrl}images/${imageId}.json`)
         .then(({ data }) => {
           resolve(data);
         })
