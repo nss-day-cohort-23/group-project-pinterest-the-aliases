@@ -6,7 +6,7 @@ angular.module("Winterest").controller("BoardsListCtrl", function ($scope, ImgFa
 
     // DISPLAY BOARDS
     //call Image factory to get all boards, then set boards as a scope variable
-    let uid = "4321"; //dummy data uid
+    let uid = "1234"; //dummy data uid
     ImgFactory.getAllBoards(uid)
     .then(boardsArr => {
         if(boardsArr.length > 0) {
