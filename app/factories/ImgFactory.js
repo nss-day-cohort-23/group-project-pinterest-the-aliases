@@ -1,5 +1,5 @@
 'use strict'; 
-angular.module("Winterest").factory("ImgFactory", function ($scope) {
+angular.module("Winterest").factory("ImgFactory", function (FBUrl, $q, $http) {
 
   function getAllImages() {
     // returns a promise for all images from the IMAGES collection in firebase
@@ -22,7 +22,21 @@ angular.module("Winterest").factory("ImgFactory", function ($scope) {
     // returns a promise that queries firebase for boards that match the given user id
   }
 
-  function getBoard(boardId) {
+  function getPinList(boardId) {
+    return $q((resolve, reject) => {
+      $http
+        .get(`${FBUrl}boards.json`)
+        .then(({ data }) => { 
+          let boardIds = Object.keys(data);
+          console.log(boardIds);
+          boardIds.forEach((id) => {
+            getPins(id);
+          });
+        })
+        .catch ((error) => {
+          console.log("totally didn't work", error);
+        });
+      });
     // returns a promise that queries firebase for pins that match the given board id
     // this will query the PIN collection 
     // it should return a list of pins
@@ -39,6 +53,18 @@ angular.module("Winterest").factory("ImgFactory", function ($scope) {
 
   }
 
+  function getPins(boardId) {
+    return $q((resolve, reject) => {
+      $http
+        .get(`${FBUrl}pins.json?orderBy="boardId"&equalTo="${boardId}"`)
+        .then(({ data }) => {
+          console.log("this should be the pins for the board", data);
+        })
+        .catch((error) => {
+          console.log("totally didn't work", error);
+        });
+    });
+  }
 
   // this function will not be exported- it's internal and will be called in the getBoard function
   function getPinnedImages(imgId) {
@@ -66,6 +92,6 @@ angular.module("Winterest").factory("ImgFactory", function ($scope) {
     // converts an object of objects to an array of objects
   }
 
-  return { getAllImages, postImage, pinImage, addBoard, getAllBoards, getBoard, editBoard, deleteBoard, deletePin };
+  return { getAllImages, postImage, pinImage, getPinList, getAllBoards, editBoard, deleteBoard, deletePin };
 
 });
