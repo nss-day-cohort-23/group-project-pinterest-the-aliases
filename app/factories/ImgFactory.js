@@ -1,5 +1,5 @@
 'use strict'; 
-angular.module("Winterest").factory("ImgFactory", function ($scope) {
+angular.module("Winterest").factory("ImgFactory", function (FBUrl, $http, $q) {
 
   function getAllImages() {
     // returns a promise for all images from the IMAGES collection in firebase
@@ -20,6 +20,18 @@ angular.module("Winterest").factory("ImgFactory", function ($scope) {
 
   function getAllBoards(uid) {
     // returns a promise that queries firebase for boards that match the given user id
+    return $q((resolve, reject) => {
+      $http
+        .get(`${FBUrl}/boards.json?orderBy="uid"&equalTo="${uid}"`)
+        .then(data => {
+          console.log("data", data);
+          resolve(data);
+        })
+        .catch(error => {
+          console.log("error", error);
+          reject(error);
+        });
+    });
   }
 
   function getBoard(boardId) {
