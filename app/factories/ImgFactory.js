@@ -23,15 +23,22 @@ angular.module("Winterest").factory("ImgFactory", function (FBUrl, $q, $http) {
   }
 
   function getPinList(boardId) {
+    let imageArray = [];
     return $q((resolve, reject) => {
       $http
-        .get(`${FBUrl}boards.json`)
+        .get(`${FBUrl}pins.json?orderBy="boardId"&equalTo="${boardId}"`)
         .then(({ data }) => { 
-          let boardIds = Object.keys(data);
-          console.log(boardIds);
-          boardIds.forEach((id) => {
-            getPins(id);
+          console.log("this is the data", data);
+          let pinIds = Object.keys(data);
+          console.log(pinIds);
+          pinIds.forEach((pinId) => {
+            getPinnedImages(pinId.imgId)
+            .then(imageObj => {
+              imageArray.push(imageObj);
+            });
           });
+          console.log("this should be an array of image objects", imageArray);
+          resolve (imageArray);
         })
         .catch ((error) => {
           console.log("totally didn't work", error);
@@ -53,12 +60,13 @@ angular.module("Winterest").factory("ImgFactory", function (FBUrl, $q, $http) {
 
   }
 
-  function getPins(boardId) {
+  function getPinnedImages(imageId) {
     return $q((resolve, reject) => {
       $http
-        .get(`${FBUrl}pins.json?orderBy="boardId"&equalTo="${boardId}"`)
+        .get(`${FBUrl}images/image9.json`)
         .then(({ data }) => {
-          console.log("this should be the pins for the board", data);
+          console.log("there probably won't be anything here", data);
+          resolve(data);
         })
         .catch((error) => {
           console.log("totally didn't work", error);
@@ -66,10 +74,7 @@ angular.module("Winterest").factory("ImgFactory", function (FBUrl, $q, $http) {
     });
   }
 
-  // this function will not be exported- it's internal and will be called in the getBoard function
-  function getPinnedImages(imgId) {
-    // returns a promise that queries the IMAGES collection for images that match the given image id
-  }
+ 
 
   function editBoard (boardId, editObject){
     // sends updated object to firebase with a put 
