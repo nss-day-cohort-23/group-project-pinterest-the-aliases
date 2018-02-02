@@ -66,6 +66,6 @@ angular.module("Winterest").factory("ImgFactory", function ($scope) {
     // converts an object of objects to an array of objects
   }
 
-  return { getAllImages, postImage, pinImage, addBoard, getAllBoards, getBoard, deleteBoard, deletePin };
+  return { getAllImages, postImage, pinImage, addBoard, getAllBoards, getBoard, editBoard, deleteBoard, deletePin };
 
 });
