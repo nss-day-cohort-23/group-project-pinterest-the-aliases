@@ -5,10 +5,15 @@ angular.module("Winterest").controller("BoardsListCtrl", function ($scope, ImgFa
 
 // DISPLAY BOARDS
 //call Image factory to get all boards, then set boards as a scope variable
-    let uid = "4321"; //dummy data uid
+    let uid = "4"; //dummy data uid
     ImgFactory.getAllBoards(uid)
     .then(boardsArr => {
-        $scope.boards = boardsArr;
+        if(boardsArr.length > 0) {
+            console.log("boardsArr", boardsArr);
+            $scope.boards = boardsArr;
+        } else {
+            $scope.message = "You have no boards";
+        }
     })
     .catch(error => {
         console.log("error", error);
