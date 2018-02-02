@@ -15,14 +15,14 @@
       <div class="field">
         <label class="label">{{inputOne}}</label>
         <div class="control">
-          <input class="input" type="text" placeholder={{placeHolderOne}}>
+          <input class="input" type="text" placeholder={{placeHolderOne}} ng-model="item.title">
         </div>
       </div>
       
       <div class="field">
         <label class="label">{{inputTwo}}</label>
         <div class="control">
-          <textarea class="textarea" placeholder={{placeHolderTwo}}></textarea>
+          <textarea class="textarea" placeholder={{placeHolderTwo}} ng-model="item.description"></textarea>
         </div>
       </div>
 
@@ -30,13 +30,13 @@
       <div class="field" ng-show = "addImagePage()">
         <label class="label">Image URL</label>
         <div class="control">
-          <input class="input" type="text" placeholder="Paste URL to image here!">
+          <input class="input" type="text" placeholder="Paste URL to image here!" ng-model="item.url">
         </div>
       </div>
       <!-- end hide/ show  url div -->
 
       <div class="control">
-        <button class="button is-primary">{{buttonName}}</button>
+        <button class="button is-primary" ng-click="saveItem()">{{buttonName}}</button>
       </div>
     </div>
   </div>
