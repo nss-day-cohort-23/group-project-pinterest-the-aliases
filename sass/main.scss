@@ -27,8 +27,11 @@ nav {
 
 .imgWrap {
    margin: auto !important;
-   display: flex;
-   flex-wrap: wrap;
+   display: flex !important;
+   flex-direction: column !important;
+   flex-wrap: wrap !important;
+   height: 400vh !important;
+   overflow: scroll !important;
 }
 
 .imgBox{
@@ -53,4 +56,7 @@ nav {
 }
 .imgCards p {
    display: none;
+}
+.image img {
+   border-radius: 7px;
 }
