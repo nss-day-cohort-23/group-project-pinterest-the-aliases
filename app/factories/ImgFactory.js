@@ -38,30 +38,56 @@ angular.module("Winterest").factory("ImgFactory", function (FBUrl, $q, $http) {
 
   function getAllBoards(uid) {
     // returns a promise that queries firebase for boards that match the given user id
+    return $q((resolve, reject) => {
+      $http
+        .get(`${FBUrl}/boards.json?orderBy="uid"&equalTo="${uid}"`)
+        .then(({data}) => {
+          let boardsArr = Object.keys(data).map(boardKey => {
+            data[boardKey].id = boardKey;
+            return(data[boardKey]);
+          });
+          resolve(boardsArr);
+        });
+    });
   }
 
-  function getBoard(boardId) {
-    // returns a promise that queries firebase for pins that match the given board id
-    // this will query the PIN collection 
-    // it should return a list of pins
-    // loop through the pins and pass each individual pin into the getPinnedImages function
-    // this function should resolve image objects 
-
-    // EXAMPLE
-    // pins.forEach((pin) => {
-    //  getPinnedImages(pin.imgId)
-    // .then ((image) =>{
-    // push images into an array and resolve an array of images?
-    // })
-    // })
-
+  function getPinList(boardId) {
+    let imageArray = []; // empty arr to store image objects
+    return $q((resolve, reject) => {
+      $http
+        .get(`${FBUrl}pins.json?orderBy="boardId"&equalTo="${boardId}"`)
+        .then(({ data }) => { 
+          for (let pin in data){
+            console.log(data[pin].imgId);
+            getPinnedImages(data[pin].imgId)
+              .then(imageObj => {
+                imageArray.push(imageObj);
+              });
+            }
+          resolve (imageArray);
+        })
+        .catch ((error) => {
+          console.log("totally didn't work", error);
+        });
+      });
   }
 
-
-  // this function will not be exported- it's internal and will be called in the getBoard function
-  function getPinnedImages(imgId) {
-    // returns a promise that queries the IMAGES collection for images that match the given image id
+  // this is an internal function called within get pin list
+  function getPinnedImages(imageId) {
+    console.log("this should be image 0", imageId);
+    return $q((resolve, reject) => {
+      $http
+        .get(`${FBUrl}images/${imageId}.json`)
+        .then(({ data }) => {
+          resolve(data);
+        })
+        .catch((error) => {
+          console.log("totally didn't work", error);
+        });
+    });
   }
+
+ 
 
   function editBoard (boardId, editObject){
     // sends updated object to firebase with a put 
@@ -84,6 +110,6 @@ angular.module("Winterest").factory("ImgFactory", function (FBUrl, $q, $http) {
     // converts an object of objects to an array of objects
   }
 
-  return { getAllImages, post, pinImage, addBoard, getAllBoards, getBoard, editBoard, deleteBoard, deletePin };
+  return { getAllImages, post, pinImage, addBoard, getAllBoards, getPinList, editBoard, deleteBoard, deletePin };
 
 });
