@@ -7,6 +7,7 @@ angular.module("Winterest").controller("PinsListCtrl", function ($scope, ImgFact
     ImgFactory.getPinList($routeParams.boardId)
     .then((data) => {
         $scope.pins = data;
+        console.log("this should be one image", $scope.pins);
     });
 
     // EDIT BOARD

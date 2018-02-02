@@ -28,13 +28,13 @@ angular.module("Winterest").factory("ImgFactory", function (FBUrl, $q, $http) {
       $http
         .get(`${FBUrl}pins.json?orderBy="boardId"&equalTo="${boardId}"`)
         .then(({ data }) => { 
-          let pinIds = Object.keys(data);
-          pinIds.forEach((pinId) => {
-            getPinnedImages(pinId.imgId)
-            .then(imageObj => {
-              imageArray.push(imageObj);
-            });
-          });
+          for (let pin in data){
+            console.log(data[pin].imgId);
+            getPinnedImages(data[pin].imgId)
+              .then(imageObj => {
+                imageArray.push(imageObj);
+              });
+            }
           resolve (imageArray);
         })
         .catch ((error) => {
@@ -45,6 +45,7 @@ angular.module("Winterest").factory("ImgFactory", function (FBUrl, $q, $http) {
 
   // this is an internal function called within get pin list
   function getPinnedImages(imageId) {
+    console.log("this should be image 0", imageId);
     return $q((resolve, reject) => {
       $http
         .get(`${FBUrl}images/${imageId}.json`)
