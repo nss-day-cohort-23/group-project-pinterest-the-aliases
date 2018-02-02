@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module("Winterest").controller("PinsListCtrl", function ($scope) {
-    $scope.board = "Fun Board";
+    $scope.board = "TOTALLY RANDOM";
 
     $scope.pins = [
         {
