@@ -27,5 +27,12 @@ angular.module("Winterest", ["ngRoute"])
         .otherwise("/", {
             templateUrl: "partials/ImageList.html",
             controller: "ImgListCtrl"
-        });
+        })
+    })
+    .run(FBCreds => {
+        let authConfig = {
+            apiKey: FBCreds.apiKey,
+            authDomain: FBCreds.authDomain
+        };
+        firebase.initializeApp(authConfig);
     });
