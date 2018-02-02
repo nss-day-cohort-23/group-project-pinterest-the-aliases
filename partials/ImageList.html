@@ -1,1 +1,13 @@
-<h1>This is the {{title}} page</h1>
+<div class="container is-gapless imgWrap tile is-ancestor">
+   <div class="tile is-parent is-vertical is-4 imgCards" ng-repeat="img in images">
+      <!-- <div class=""> -->
+         <div class="tile is-child box imgBox">
+            <h3 class="title">{{img.title}}</h3>
+            <span class="image">
+               <img src="{{img.url}}" height="200" width="200" alt="">
+            </span>
+            <p >{{img.tags}}</p>
+         </div>
+      <!-- </div> -->
+   </div>
+</div>

@@ -1,8 +1,14 @@
 'use strict'; 
-angular.module("Winterest").factory("ImgFactory", function ($scope) {
+angular.module("Winterest").factory("ImgFactory", function ($q, $http, FBUrl) {
 
   function getAllImages() {
     // returns a promise for all images from the IMAGES collection in firebase
+    return $q((resolve,reject) => {
+      $http.get(`${FBUrl}/images.json`)
+      .then(({ data }) => {
+        resolve(Object.values(data));
+      });
+    });
   }
 
   function postImage() {

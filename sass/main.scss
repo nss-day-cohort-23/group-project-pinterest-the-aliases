@@ -1,0 +1,29 @@
+.imgWrap {
+   margin: auto !important;
+   display: flex;
+   flex-wrap: wrap;
+}
+
+.imgBox{
+   padding: 0;
+   height: fit-content;
+}
+.imgBox:hover h3{
+   opacity: .7;
+}
+.imgBox h3{
+   color: white;
+   position: absolute;
+   z-index: 2;
+   opacity: 0;
+   background-color: rgba(0,0,0,.3);
+   font-size: 1.3em;
+   letter-spacing: .6px;
+}
+
+.imgCards {
+   height: fit-content;
+}
+.imgCards p {
+   display: none;
+}
