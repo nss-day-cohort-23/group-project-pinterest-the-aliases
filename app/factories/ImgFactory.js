@@ -72,6 +72,6 @@ angular.module("Winterest").factory("ImgFactory", function ($q, $http, FBUrl) {
     // converts an object of objects to an array of objects
   }
 
-  return { getAllImages, postImage, pinImage, addBoard, getAllBoards, getBoard, deleteBoard, deletePin };
+  return { getAllImages, postImage, pinImage, addBoard, getAllBoards, getBoard, editBoard, deleteBoard, deletePin };
 
 });

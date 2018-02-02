@@ -1,1 +1,21 @@
-<h1>This is the {{title}} page</h1>
+<section class="hero is-primary">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title"> My {{board}} Board!<h1>
+        </div>
+    </div>
+</section>
+
+<div class="columns is-multiline">    
+    <div ng-repeat="pin in pins" class ="column is-one-third">
+        <div class="tile is-parent">
+            <article class="tile is-child">
+                <p class="title">{{pin.title}}</p>
+                <figure class="image is-4by3">
+                    <img src="{{pin.url}}">
+                </figure>
+                <p>Description PH</p>
+            </article>
+        </div>
+    </div>
+</div>
