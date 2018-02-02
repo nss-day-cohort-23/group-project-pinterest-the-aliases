@@ -21,8 +21,8 @@ angular.module("Winterest", ["ngRoute"])
             controller: "AddBoardCtrl"
         })
         .when("/boards/:boardId", {
-            templateUrl: "partials/ImageList.html",
-            controller: "BoardCtrl"
+            templateUrl: "partials/PinsList.html",
+            controller: "PinsListCtrl"
         })
         .otherwise("/", {
             templateUrl: "partials/ImageList.html",
