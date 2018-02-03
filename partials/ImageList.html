@@ -1,11 +1,10 @@
-<div class="container is-gapless imgWrap">
-   <div class="tile is-parent is-4 imgCards" ng-repeat="img in images">
-         <div class="tile is-child box imgBox">
-            <h3 class="title">{{img.title}}</h3>
-            <span class="image">
-               <img src="{{img.url}}" height="200" width="200" alt="">
-            </span>
-            <p >{{img.tags}}</p>
+<div class="imgWrap">
+   <div id="columns">
+      <div class="box imgBox" ng-repeat="img in images">
+         <h3 class="title">{{img.title}}</h3>
+         <div class="image">
+            <img src="{{img.url}}" alt="{{img.tags}}"/>
          </div>
+      </div>
    </div>
 </div>

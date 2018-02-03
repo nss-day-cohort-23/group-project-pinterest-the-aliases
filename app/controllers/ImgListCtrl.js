@@ -1,4 +1,4 @@
-'use strict'; 
+'use strict';
 
 angular.module("Winterest").controller("ImgListCtrl", function ($scope, ImgFactory) {
     $scope.title = "Image List";
