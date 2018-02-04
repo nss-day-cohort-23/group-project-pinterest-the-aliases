@@ -1,3 +1,7 @@
+*{
+  backface-visibility: hidden;
+}
+
 nav {
   margin-top: 0;
   background: #76e9d8;
@@ -35,36 +39,49 @@ nav {
   width: 90%;
 	max-width: 1100px;
 	min-width: 800px;
-	margin: 30px auto;
+  margin: 30px auto;
+  transform:translate3d(0,0,0);
 }
 
 .imgBox{
-   padding: 0;
-   height: fit-content;
-   margin: 0px .1em;
-   margin-bottom: 1.1em !important;
+  padding: 0;
+  height: fit-content;
+  margin: 0px .1em;
+  margin-bottom: 1.1em !important;
+  position: relative;  
+  z-index: 0;
 }
 .box{
   border-radius: 7px;
 }
 
 .imgBox:hover h3{
-   opacity: .7;
+  opacity: .7;
+  transition: opacity .1s;
 }
 
 .imgBox h3{
-   color: white;
-   position: absolute;
-   z-index: 2;
-   opacity: 0;
-   background-color: rgba(0,0,0,.3);
-   font-size: 1.3em;
-   letter-spacing: .6px;
-   padding-left: 5px;
-   border-radius: 6px;
+  color: white;
+  position: absolute;
+  z-index: 2;
+  opacity: 0;
+  background-color: rgba(0,0,0,.3);
+  font-size: 1.3em;
+  letter-spacing: .6px;
+  padding-left: 5px;
+  border-radius: 6px;
 }
-
+.image{
+  border-radius: 7px;
+}
+.image:hover{
+  cursor: zoom-in;
+  box-shadow: inset 0 0 130px rgba(0,0,0,.4);
+  transition: box-shadow .08s;
+}
 .image img {
   width: 100%;
   border-radius: 7px;
+  position: relative;
+  z-index: -1;
 }
