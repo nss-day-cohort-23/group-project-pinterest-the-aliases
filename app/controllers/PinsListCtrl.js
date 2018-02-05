@@ -1,14 +1,26 @@
 "use strict";
 
 angular.module("Winterest").controller("PinsListCtrl", function ($scope, ImgFactory, $routeParams) {
-    $scope.board = "TOTALLY RANDOM";
+    
 
     // gets all pins for the given board
     ImgFactory.getPinList($routeParams.boardId)
     .then((data) => {
         $scope.pins = data;
-        console.log("this should be one image", $scope.pins);
     });
+
+    //checks for current board title and lists it in the partial
+firebase.auth().onAuthStateChanged(function (user) {
+    ImgFactory.getAllBoards(firebase.auth().currentUser.uid)
+    .then((boards) => {
+        boards.forEach(board => {
+            if (board.id === $routeParams.boardId) {
+                $scope.currentBoard = board.title;
+            }
+
+        });
+    });
+});
 
     // EDIT BOARD
     // grabs edited data from edit modal
