@@ -10,6 +10,7 @@
                         <p class="title">{{board.title}}</p>
                         <p class="subtitle">{{board.description}}</p>
                     </a>
+                    <br>
                         <button class="button" ng-click="setModal()">Edit Board</button>
                     </article>
                 </div>
@@ -20,16 +21,20 @@
 <div class="modal">
     <div class="modal-background"></div>
        <div class="modal-content">
-           <h1>Edit your board?</h1>
-          <div>
-            <label for="boardTitle">Title</label>
-            <input type="text" id="boardTitle" ng.model="">
+           <div class="centerPls">
+            <h1>Edit your board?</h1>
+            <br>
+            <div>
+                <label for="boardTitle">Title</label>
+                <input type="text" id="boardTitle" ng.model="" placeholder="">
+            </div>
+            <div>
+                <label for="boardDescription">Description</label>          
+                <input type="text" id="boardDescription" ng.model="" placeholder="">
+            </div>
+            <br>
+                <button class="button">Save</button>
           </div>
-          <div>
-            <label for="boardDescription">Description</label>          
-            <input type="text" id="boardDescription" ng.model="">
-          </div>
-            <button class="button">Save</button>
        </div>
     <button class="modal-close is-large" aria-label="close" ng-click="toggleModal()"></button>
  </div>

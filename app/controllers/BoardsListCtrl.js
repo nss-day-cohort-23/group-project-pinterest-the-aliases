@@ -6,6 +6,7 @@ angular.module("Winterest").controller("BoardsListCtrl", function ($scope, ImgFa
 
     // DISPLAY BOARDS
     //call Image factory to get all boards, then set boards as a scope variable
+
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
             ImgFactory.getAllBoards(firebase.auth().currentUser.uid)
@@ -25,9 +26,15 @@ angular.module("Winterest").controller("BoardsListCtrl", function ($scope, ImgFa
         }
     });
 
+    // $scope.board = {
+    //     title: "",
+    //     description: ""
+    // };
+
     $scope.setModal = function(){
         let modal = document.querySelector('.modal');
-        modal.children[1].children[0].setAttribute("title", this.board.title);
+        modal.children[1].children[0].children[3].children[1].setAttribute("ng-model", this.boards[0].title);
+        console.log(modal.children[1].children[0].children[2].children[1]);
         modal.classList.toggle("is-active");
     };
 
