@@ -1,9 +1,19 @@
 'use strict'; 
 
-angular.module("Winterest").controller("NavCtrl", function ($scope, FilterFactory) {
+angular.module("Winterest").controller("NavCtrl", function ($scope, FilterFactory, AuthFactory) {
     $scope.title = "Winterest";
     $scope.search = FilterFactory;
 
+
+    $scope.login = () => {
+        AuthFactory.login()
+        .then( () => {
+            console.log("Yay, logged in");
+        })
+        .catch(err => {
+            console.log("error", err);
+        });
+    };
     // LOGIN USER
     // call auth factory to log in user
 

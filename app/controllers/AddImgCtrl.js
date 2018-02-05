@@ -24,7 +24,7 @@ angular.module("Winterest").controller("AddImgCtrl", function ($scope, ImgFactor
   // passes to firebase
   $scope.saveItem = () => {
     console.log('New image to add', $scope.item);
-    ImgFactory.post($scope.item)
+    ImgFactory.post($scope.item, "images")
     .then( (data) => {
       $location.url("/images");
     });

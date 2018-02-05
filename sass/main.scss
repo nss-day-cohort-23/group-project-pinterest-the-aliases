@@ -85,8 +85,12 @@ nav {
   position: relative;
   z-index: -1;
 }
+.image img {
+   border-radius: 7px;
+}
 
-// ----- modal -------//
+
+// --------- modal -------//
 .modal-content{
   position: relative;
   margin: 0 5% !important;
@@ -102,4 +106,16 @@ nav {
   background-color: transparent;
   color: rgba(230,60,0,.85);
   border-radius: 5px;
+}
+
+
+//--------- footer ------//
+footer {
+  margin-top: 0 !important;
+  background: #76e9d8 !important;
+  padding: 2vh 0 !important;
+}
+
+.right {
+  float: right;
 }
