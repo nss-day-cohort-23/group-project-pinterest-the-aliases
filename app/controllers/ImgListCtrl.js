@@ -3,7 +3,7 @@
 angular.module("Winterest").controller("ImgListCtrl", function ($scope, ImgFactory, FilterFactory) {
     $scope.title = "Image List";
     $scope.search = FilterFactory;
-
+    
     //shuffle array to display random images
     const shuffleArr = (array) => {
         for (let i = array.length - 1; i > 0; i--) {
