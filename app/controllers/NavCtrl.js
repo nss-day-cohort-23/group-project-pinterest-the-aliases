@@ -1,6 +1,6 @@
 'use strict'; 
 
-angular.module("Winterest").controller("NavCtrl", function ($scope, FilterFactory, AuthFactory, $window) {
+angular.module("Winterest").controller("NavCtrl", function ($scope, FilterFactory, AuthFactory, $window, $route, $location) {
     $scope.title = "Winterest";
     $scope.search = FilterFactory;
     
@@ -39,6 +39,7 @@ angular.module("Winterest").controller("NavCtrl", function ($scope, FilterFactor
 
     $scope.goHome = () => {
         $window.location.href = "#!/images";
+        $route.reload();
     };
 
 });
