@@ -1,6 +1,9 @@
 'use strict'; 
 
-angular.module("Winterest").controller("BoardsListCtrl", function ($scope, ImgFactory, FilterFactory) {
+angular
+    .module("Winterest")
+    .controller("BoardsListCtrl", function ($scope, ImgFactory, FilterFactory, $q, $http, FBUrl) {
+
     $scope.title = "Board List";
     $scope.search = FilterFactory;
 
@@ -26,25 +29,46 @@ angular.module("Winterest").controller("BoardsListCtrl", function ($scope, ImgFa
         }
     });
 
-    // $scope.board = {
-    //     title: "",
-    //     description: ""
-    // };
+    // LOAD INDIVIDUAL BOARD WHEN YOU CLICK ON A BOARD
+    // grab board id
+    // load route to single board view when you click on a board
 
+    $scope.localBoard = {
+        title: "",
+        description: ""
+    };
+    
     $scope.setModal = function(){
         let modal = document.querySelector('.modal');
-        modal.children[1].children[0].children[3].children[1].setAttribute("ng-model", this.boards[0].title);
-        console.log(modal.children[1].children[0].children[2].children[1]);
+        modal.children[1].children[0].children[2].children[1].setAttribute("placeholder", this.board.title);
+        modal.children[1].children[0].children[3].children[1].setAttribute("placeholder", this.board.description);
+        $scope.boardIdVariable = this.board.id;
         modal.classList.toggle("is-active");
     };
-
+    
     $scope.toggleModal = () => {
         document.querySelector('.modal').classList.toggle("is-active");
     };
+    
+    $scope.updateBoard = (localBoard, boardId) => {
+        console.log(localBoard);        
+        return $q((resolve, reject) => {
+            $http
+            .patch(`${FBUrl}/boards/${boardId}.json`,
+            JSON.stringify(localBoard)
+        )
+        .then((data) => {
+            resolve(data);
+            console.log(data);
+            console.log("patched!");
+        })
+        .catch(err => {
+            reject(err);
+        });
+        });
+    };
+
+
         
-        
-// LOAD INDIVIDUAL BOARD WHEN YOU CLICK ON A BOARD
-// grab board id
-// load route to single board view when you click on a board
 
 });

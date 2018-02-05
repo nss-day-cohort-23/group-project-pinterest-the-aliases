@@ -26,14 +26,14 @@
             <br>
             <div>
                 <label for="boardTitle">Title</label>
-                <input type="text" id="boardTitle" ng.model="" placeholder="">
+                <input type="text" id="boardTitle" ng-model="localBoard.title" placeholder="">
             </div>
             <div>
                 <label for="boardDescription">Description</label>          
-                <input type="text" id="boardDescription" ng.model="" placeholder="">
+                <input type="text" id="boardDescription" ng-model="localBoard.description" placeholder="">
             </div>
             <br>
-                <button class="button">Save</button>
+                <button class="button" ng-click="updateBoard(localBoard, boardIdVariable)">Save</button>
           </div>
        </div>
     <button class="modal-close is-large" aria-label="close" ng-click="toggleModal()"></button>
