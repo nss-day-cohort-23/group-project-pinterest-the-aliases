@@ -3,7 +3,7 @@
     <h2>{{message}}</h2>
     <br>
     <div class="columns is-multiline">    
-        <div ng-repeat="board in boards | filter: {title: search.term}" class ="column is-one-third">
+        <div ng-repeat="board in boards | filter: search.term" class ="column is-one-third">
             <a ng-href="#!/boards/{{board.id}}">
                 <div class="tile is-parent" >
                     <article class="tile is-child box">
