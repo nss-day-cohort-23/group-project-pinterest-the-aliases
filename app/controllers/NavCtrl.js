@@ -26,7 +26,7 @@ angular.module("Winterest").controller("NavCtrl", function ($scope, FilterFactor
             console.log("error", err);
         });
     };
-
+    
     // LOGOUT USER
     // call auth factory to log out user
     $scope.gtfo = () => {
@@ -37,10 +37,8 @@ angular.module("Winterest").controller("NavCtrl", function ($scope, FilterFactor
         });
     };
 
-    
-    // Nav Items
-    // array of nav item objects
-
-
+    $scope.goHome = () => {
+        $window.location.href = "#!/images";
+    };
 
 });
