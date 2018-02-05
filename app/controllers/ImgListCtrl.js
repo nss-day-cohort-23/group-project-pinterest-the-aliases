@@ -19,7 +19,7 @@ angular.module("Winterest").controller("ImgListCtrl", function ($scope, ImgFacto
     };
     $scope.toggleModal = () => {
         document.querySelector('.modal').classList.toggle("is-active");
-    }
+    };
 
     // DISPLAY ALL IMAGES
     // call image factory and get all images, set image array to scope variable
