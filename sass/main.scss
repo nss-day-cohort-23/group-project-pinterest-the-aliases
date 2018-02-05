@@ -1,3 +1,13 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+#mainContent {
+  flex: 1;
+}
+
 nav {
   margin-top: 0;
   background: #76e9d8;
