@@ -22,14 +22,11 @@ angular.module("Winterest").controller("AddBoardCtrl", function ($scope, ImgFact
       
       // passes to firebase
       $scope.saveItem = () => {
-        console.log('New board to add', $scope.item);
         ImgFactory.post($scope.item, "boards")
         .then( (data) => {
           $location.url("/boards");
         });
       };
-    } else {
-      console.log("You are not logged in");
     }
   });
 });
