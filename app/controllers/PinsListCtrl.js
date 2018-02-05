@@ -22,6 +22,14 @@ firebase.auth().onAuthStateChanged(function (user) {
     });
 });
 
+    $scope.setModal = function () {
+        let modal = document.querySelector('.modal');
+        modal.children[1].children[0].children[0].setAttribute("src", this.pin.url);
+        modal.classList.toggle("is-active");
+    };
+    $scope.toggleModal = () => {
+        document.querySelector('.modal').classList.toggle("is-active");
+    };
     // EDIT BOARD
     // grabs edited data from edit modal
     // sends a WHOLE DAMN OBJECT back to firebase
