@@ -6,7 +6,7 @@
     </div>
 </section>
 
-<div class="columns is-multiline">    
+<!-- <div class="columns is-multiline">    
     <div ng-repeat="pin in pins" class ="column is-one-third">
         <div class="tile is-parent">
             <article class="tile is-child">
@@ -18,4 +18,26 @@
             </article>
         </div>
     </div>
+</div> -->
+
+<div class="imgWrap">
+    <div id="columns">
+        <div class="box imgBox" ng-repeat="pin in pins">
+            <h3 class="title">{{pin.title}}</h3>
+            <div class="image listImg" ng-click="setModal()">
+                <img ng-src="{{pin.url}}" alt="" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <p class="image">
+            <img src="" alt="">
+        </p>
+        <!-- <button class="button modalBtn">Collect</button> -->
+    </div>
+    <button class="modal-close is-large" aria-label="close" ng-click="toggleModal()"></button>
 </div>
