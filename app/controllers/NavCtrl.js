@@ -1,8 +1,16 @@
 'use strict'; 
 
-angular.module("Winterest").controller("NavCtrl", function ($scope, FilterFactory, AuthFactory) {
+angular.module("Winterest").controller("NavCtrl", function ($scope, FilterFactory, AuthFactory, $window) {
     $scope.title = "Winterest";
     $scope.search = FilterFactory;
+
+    $scope.gtfo = () => {
+        AuthFactory.logout()
+        .then( () => {
+            console.log("You is gone");
+            $window.location.href = "#!/images"
+        })
+    }
 
 
     $scope.login = () => {

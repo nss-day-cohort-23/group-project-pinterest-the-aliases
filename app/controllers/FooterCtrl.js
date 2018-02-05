@@ -6,5 +6,5 @@ angular.module("Winterest").controller("FooterCtrl", function ($scope, FilterFac
 
      $scope.top = () => {
         $window.scrollTo(0, 0);
-    }
+    };
 });
