@@ -2,9 +2,20 @@
    <div id="columns">
       <div class="box imgBox" ng-repeat="img in images">
          <h3 class="title">{{img.title}}</h3>
-         <div class="image">
+         <div class="image listImg" ng-click="setModal()">
             <img ng-src="{{img.url}}" alt=""/>
          </div>
       </div>
    </div>
+</div>
+
+<div class="modal">
+   <div class="modal-background"></div>
+      <div class="modal-content">
+         <p class="image">
+            <img src="" alt="">
+         </p>
+         <button class="button modalBtn">Collect</button>
+      </div>
+   <button class="modal-close is-large" aria-label="close" ng-click="toggleModal()"></button>
 </div>

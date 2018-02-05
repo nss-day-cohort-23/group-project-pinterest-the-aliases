@@ -11,6 +11,16 @@ angular.module("Winterest").controller("ImgListCtrl", function ($scope, ImgFacto
         return array;
     };
 
+    $scope.setModal = function(){
+        let modal = document.querySelector('.modal');
+        console.log(this);
+        modal.children[1].children[0].children[0].setAttribute("src", this.img.url);
+        modal.classList.toggle("is-active");
+    };
+    $scope.toggleModal = () => {
+        document.querySelector('.modal').classList.toggle("is-active");
+    }
+
     // DISPLAY ALL IMAGES
     // call image factory and get all images, set image array to scope variable
     ImgFactory.getAllImages()
@@ -27,4 +37,5 @@ angular.module("Winterest").controller("ImgListCtrl", function ($scope, ImgFacto
     // grabs image id and board id
     // assembles pin object
     // calls image factory to post pin
+
 });
