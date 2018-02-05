@@ -6,6 +6,10 @@ angular.module("Winterest").factory("ImgFactory", function (FBUrl, $q, $http) {
     return $q((resolve,reject) => {
       $http.get(`${FBUrl}/images.json`)
       .then(({ data }) => {
+        let imgArr = Object.keys(data).map(imgKey => {
+          data[imgKey].id = imgKey;
+          return (data[imgKey]);
+        });
         resolve(Object.values(data));
       })
       .catch(error => {

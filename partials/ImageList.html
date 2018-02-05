@@ -9,13 +9,27 @@
    </div>
 </div>
 
-<div class="modal">
+<div class="modal imgModal">
    <div class="modal-background"></div>
       <div class="modal-content">
          <p class="image modalImg">
             <img src="" alt="">
          </p>
-         <button class="button modalBtn">Collect</button>
+         <button class="button modalBtn" ng-click="toggleBoardModal()">+ Collect</button>
       </div>
    <button class="modal-close is-large" aria-label="close" ng-click="toggleModal()"></button>
+</div>
+
+<div class="modal boardModal">
+   <div class="modal-background"></div>
+   <div class="modal-content">
+      <div>
+         <ul class="board-ul" ng-repeat="board in boards">
+            <li ng-click="pinImg()">
+               {{board.title}} <span class="boardPlus">+</span>
+            </li>
+         </ul>
+      </div>
+   </div>
+   <button class="modal-close is-large" aria-label="close" ng-click="toggleBoardModal()"></button>
 </div>
