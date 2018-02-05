@@ -5,11 +5,14 @@
                 <img src="../img/winterest.png" alt="Winterest Logo" width="150" height="50">
             </a>
             &copy;
-            <a href="https://github.com/nss-day-cohort-23/group-project-pinterest-the-aliases">The Aliases</a>
-            <a class="link is-info nav-link right" href="#!/boards">Boards</a>
-            <a class="link is-info nav-link right" href="#!/newboard">Add Board</a>
-            <a class="link is-info nav-link right" href="#!/newimage">Add Image</a>
-            <a class="link is-info nav-link right" ng-click="top()">Back to Top</a>
+            
+            <a ng-if="user" href="https://github.com/nss-day-cohort-23/group-project-pinterest-the-aliases">The Aliases</a>
+            <a ng-if="user" class="link is-info nav-link right" href="#!/boards">Boards</a>
+            <a ng-if="user" class="link is-info nav-link right" href="#!/newboard">Add Board</a>
+            <a ng-if="user" class="link is-info nav-link right" href="#!/newimage">Add Image</a>
+            <a ng-if="user" class="link is-info nav-link right" ng-click="top()">Back to Top</a>
+            <a ng-if="user" class="link is-info nav-link right" ng-click="gtfo()">Logout</a>
+            <a ng-if="!user" class="link is-info nav-link right" ng-click="login()">Login</a>
         </p>
     </div>
     </div>
