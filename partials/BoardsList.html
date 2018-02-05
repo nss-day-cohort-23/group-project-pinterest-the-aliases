@@ -1,5 +1,12 @@
+<section class="hero is-primary">
+    <div class="hero-body">
+        <div class="container">
+        <h1 class="title">Your Boards</h1>
+        </div>
+    </div>
+</section>
+
 <div>
-    <h1>Welcome to your boards!</h1>
     <h2>{{message}}</h2>
     <br>
     <div class="columns is-multiline">    
@@ -22,19 +29,20 @@
     <div class="modal-background"></div>
        <div class="modal-content">
            <div class="centerPls">
-            <h1>Edit your board?</h1>
+            <h1 class="bigger">Edit your board?</h1>
             <br>
-            <div>
-                <label for="boardTitle">Title</label>
-                <input type="text" id="boardTitle" ng-model="localBoard.title" placeholder="">
+            <div class="field">
+                <label for="boardTitle" class="biggerish">Title</label>
+                <input type="text" id="boardTitle" ng-model="localBoard.title" placeholder="" class="biggerish">
             </div>
-            <div>
-                <label for="boardDescription">Description</label>          
-                <input type="text" id="boardDescription" ng-model="localBoard.description" placeholder="">
+            <div class="field">
+                <label for="boardDescription" class="biggerish">Description</label>          
+                <input type="text" id="boardDescription" class="biggerish" ng-model="localBoard.description" placeholder="">
             </div>
             <br>
                 <button class="button" ng-click="updateBoard(localBoard, boardIdVariable)">Save</button>
           </div>
        </div>
     <button class="modal-close is-large" aria-label="close" ng-click="toggleModal()"></button>
+
  </div>
