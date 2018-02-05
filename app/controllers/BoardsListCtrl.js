@@ -21,7 +21,7 @@ angular.module("Winterest").controller("BoardsListCtrl", function ($scope, ImgFa
                 console.log("error", error);
             });
         } else {
-            console.log("You are not logged in")
+            console.log("You are not logged in");
         }
     });
         

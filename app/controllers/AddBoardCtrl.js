@@ -1,6 +1,6 @@
 'use strict'; 
 
-angular.module("Winterest").controller("AddBoardCtrl", function ($scope) {
+angular.module("Winterest").controller("AddBoardCtrl", function ($scope, ImgFactory, $location) {
  $scope.title = "Add Board";
  $scope.inputOne = "Board Title";
  $scope.placeHolderOne = "Pictures of Nicholas Cage's Face";
@@ -8,7 +8,28 @@ angular.module("Winterest").controller("AddBoardCtrl", function ($scope) {
  $scope.placeHolderTwo = "Stare at these when you need inspiration";
  $scope.buttonName = "Add Board";
 
- // grabs board info
- // assembles object
- // passes into post function in firebase
+  // Checks if user
+  // grabs title and description from dom
+  // grabs uid from firebase
+  // assembles image object
+  firebase.auth().onAuthStateChanged(function(user) {
+    if(user) {
+      $scope.item = {
+        uid: firebase.auth().currentUser.uid,
+        title: "",
+        description: ""
+      };
+      
+      // passes to firebase
+      $scope.saveItem = () => {
+        console.log('New board to add', $scope.item);
+        ImgFactory.post($scope.item, "boards")
+        .then( (data) => {
+          $location.url("/boards");
+        });
+      };
+    } else {
+      console.log("You are not logged in");
+    }
+  });
 });
