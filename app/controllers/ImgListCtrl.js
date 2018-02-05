@@ -13,7 +13,6 @@ angular.module("Winterest").controller("ImgListCtrl", function ($scope, ImgFacto
 
     $scope.setModal = function(){
         let modal = document.querySelector('.modal');
-        console.log(this);
         modal.children[1].children[0].children[0].setAttribute("src", this.img.url);
         modal.classList.toggle("is-active");
     };
