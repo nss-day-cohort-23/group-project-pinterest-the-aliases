@@ -8,9 +8,9 @@ angular.module("Winterest").controller("NavCtrl", function ($scope, FilterFactor
         AuthFactory.logout()
         .then( () => {
             console.log("You is gone");
-            $window.location.href = "#!/images"
-        })
-    }
+            $window.location.href = "#!/images";
+        });
+    };
 
 
     $scope.login = () => {
