@@ -1,9 +1,11 @@
 'use strict';
 
-angular.module("Winterest").controller("ImgListCtrl", function ($scope, ImgFactory) {
+angular.module("Winterest").controller("ImgListCtrl", function ($scope, ImgFactory, FilterFactory) {
     $scope.imgId = "";
     $scope.pin = {};
     $scope.title = "Image List";
+    $scope.search = FilterFactory;
+    
     //shuffle array to display random images
     const shuffleArr = (array) => {
         for (let i = array.length - 1; i > 0; i--) {
@@ -46,7 +48,7 @@ angular.module("Winterest").controller("ImgListCtrl", function ($scope, ImgFacto
             ImgFactory.getAllBoards(firebase.auth().currentUser.uid)
             .then(boardsArr => {
                 if(boardsArr.length > 0) {
-                    console.log("boardsArr", boardsArr);
+                    // console.log("boardsArr", boardsArr);
                     $scope.boards = boardsArr;
                 } else {
                     $scope.message = "You need to add some boards!";

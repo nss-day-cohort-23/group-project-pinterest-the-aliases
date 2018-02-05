@@ -13,7 +13,6 @@ angular.module("Winterest").factory("ImgFactory", function (FBUrl, $q, $http) {
         resolve(Object.values(data));
       })
       .catch(error => {
-        console.log(error);
         reject(error);
       });
     });

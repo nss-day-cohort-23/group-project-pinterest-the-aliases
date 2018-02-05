@@ -143,10 +143,20 @@ nav {
   transition: opacity .5s;
   cursor: pointer;
 }
+.board-ul:hover li span {
+  opacity: 1;
+  transition: opacity .5s;
+}
 .board-ul li span {
   position: absolute;
   right: 5em;
   font-size: 1.4em;
+  opacity: 0;
+  transition: opacity .5s;
+}
+
+.centerPls {
+  text-align: center;
 }
 
 
