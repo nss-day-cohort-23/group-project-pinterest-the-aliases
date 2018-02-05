@@ -33,6 +33,7 @@ angular.module("Winterest").controller("ImgListCtrl", function ($scope, ImgFacto
     $scope.pinImg = function(){
         $scope.pin.boardId = this.board.id;
         ImgFactory.post($scope.pin,'pins');
+        // document.querySelector('.imgList-msg').classList.toggle("is-active");
     };
 
     // DISPLAY ALL IMAGES

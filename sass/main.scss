@@ -99,6 +99,12 @@ nav {
 .image img {
    border-radius: 7px;
 }
+.imgList-msg{
+  position: absolute;
+  z-index: 3;
+  right: 0px;
+  display: none;
+}
 
 
 // --------- modal -------//
@@ -127,7 +133,7 @@ nav {
 
 .board-ul{
   color: white;
-  background-color: rgba(235,0,20,.6);
+  background-color: rgba(250,0,20,.6);
   padding: 1em;
   margin: 1em 1em;
   border-radius: 8px;
