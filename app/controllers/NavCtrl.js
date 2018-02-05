@@ -22,11 +22,7 @@ angular.module("Winterest").controller("NavCtrl", function ($scope, FilterFactor
             console.log("error", err);
         });
     };
-    // LOGIN USER
-    // call auth factory to log in user
 
-    // LOGOUT USER
-    // call auth factory to log out user
 
     // Nav Items
     // array of nav item objects

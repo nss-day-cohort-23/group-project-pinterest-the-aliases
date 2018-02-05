@@ -24,6 +24,16 @@ angular.module("Winterest").controller("BoardsListCtrl", function ($scope, ImgFa
             console.log("You are not logged in");
         }
     });
+
+    $scope.setModal = function(){
+        let modal = document.querySelector('.modal');
+        modal.children[1].children[0].setAttribute("title", this.board.title);
+        modal.classList.toggle("is-active");
+    };
+
+    $scope.toggleModal = () => {
+        document.querySelector('.modal').classList.toggle("is-active");
+    };
         
         
 // LOAD INDIVIDUAL BOARD WHEN YOU CLICK ON A BOARD
