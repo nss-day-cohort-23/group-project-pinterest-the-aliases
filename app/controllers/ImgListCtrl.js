@@ -1,6 +1,8 @@
 'use strict';
 
 angular.module("Winterest").controller("ImgListCtrl", function ($scope, ImgFactory, FilterFactory) {
+    $scope.imgId = "";
+    $scope.pin = {};
     $scope.title = "Image List";
     $scope.search = FilterFactory;
     
@@ -14,12 +16,24 @@ angular.module("Winterest").controller("ImgListCtrl", function ($scope, ImgFacto
     };
 
     $scope.setModal = function(){
-        let modal = document.querySelector('.modal');
+        let modal = document.querySelector('.imgModal');
         modal.children[1].children[0].children[0].setAttribute("src", this.img.url);
+        $scope.pin.imgId = this.img.id;
         modal.classList.toggle("is-active");
     };
     $scope.toggleModal = () => {
-        document.querySelector('.modal').classList.toggle("is-active");
+        document.querySelector('.imgModal').classList.toggle("is-active");
+    };
+    $scope.toggleBoardModal = () => {
+        document.querySelector('.boardModal').classList.toggle("is-active");
+    };
+
+    // PIN IMAGE - grabs image id and board id
+    // assembles pin object, calls image factory to post pin
+    $scope.pinImg = function(){
+        $scope.pin.boardId = this.board.id;
+        ImgFactory.post($scope.pin,'pins');
+        // document.querySelector('.imgList-msg').classList.toggle("is-active");
     };
 
     // DISPLAY ALL IMAGES
@@ -29,14 +43,24 @@ angular.module("Winterest").controller("ImgListCtrl", function ($scope, ImgFacto
         $scope.images = shuffleArr(data);
     });
 
-    // GET ALL OF THE USER'S BOARDS --> this will be in the modal
-    // accepts a user id
-    // passes it into ImageFactory.getAllBoards(uid)
-    // prints board list into modal
-
-    // PIN IMAGE
-    // grabs image id and board id
-    // assembles pin object
-    // calls image factory to post pin
+    // GET ALL OF THE USER'S BOARDS --> in the img modal
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            ImgFactory.getAllBoards(firebase.auth().currentUser.uid)
+            .then(boardsArr => {
+                if(boardsArr.length > 0) {
+                    // console.log("boardsArr", boardsArr);
+                    $scope.boards = boardsArr;
+                } else {
+                    $scope.message = "You need to add some boards!";
+                }
+            })
+            .catch(error => {
+                console.log("error", error);
+            });
+        } else {
+            console.log("You are not logged in");
+        }
+    });
 
 });
