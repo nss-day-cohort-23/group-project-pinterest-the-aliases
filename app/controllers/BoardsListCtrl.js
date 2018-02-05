@@ -66,5 +66,30 @@ angular
         });
         });
     };
+    $scope.deleteBoard = (boardId) => {
+        return $q((resolve, reject) => {
+            $http
+            .delete(`${FBUrl}/boards/${boardId}.json`
+        )
+        .then( () => {
+            resolve();
+            $scope.toggleModal();
+            ImgFactory.getAllBoards(firebase.auth().currentUser.uid)
+            .then(boardsArr => {
+                if(boardsArr.length > 0) {
+                    $scope.boards = boardsArr;
+                } else {
+                    $scope.message = "You have no boards";
+                }
+            })
+            .catch(error => {
+                console.log("error", error);
+            });
+        })
+        .catch(err => {
+            reject(err);
+        });
+        });
+    };
 
 });
