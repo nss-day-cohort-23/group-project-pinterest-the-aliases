@@ -1,7 +1,7 @@
 "use strict";
 
-angular.module("Winterest").controller("PinsListCtrl", function ($scope, ImgFactory, $routeParams) {
-    
+angular.module("Winterest").controller("PinsListCtrl", function ($scope, ImgFactory, $routeParams, FilterFactory) {
+    $scope.search = FilterFactory;
 
     // gets all pins for the given board
     ImgFactory.getPinList($routeParams.boardId)
