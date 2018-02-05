@@ -7,6 +7,10 @@ angular.module("Winterest").factory("ImgFactory", function (FBUrl, $q, $http) {
       $http.get(`${FBUrl}/images.json`)
       .then(({ data }) => {
         resolve(Object.values(data));
+      })
+      .catch(error => {
+        console.log(error);
+        reject(error);
       });
     });
   }

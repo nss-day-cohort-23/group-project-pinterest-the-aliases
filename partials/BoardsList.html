@@ -1,16 +1,17 @@
-<h1>This is the {{title}} page</h1>
-<h2>{{message}}</h2>
-<div class="columns is-multiline">    
-    <div ng-repeat="board in boards | filter: {title: search.term}" class ="column is-one-third">
-        <a ng-href="#!/boards/{{board.id}}">
-            <div class="tile is-parent" >
-                <article class="tile is-child box">
-                    <p class="title">{{board.title}}</p>
-                    <p class="subtitle">{{board.description}}</p>
-                </article>
-            </div>
-        </a>
+<div>
+    <h1>This is the {{title}} page</h1>
+    <h2>{{message}}</h2>
+    <br>
+    <div class="columns is-multiline">    
+        <div ng-repeat="board in boards | filter: {title: search.term}" class ="column is-one-third">
+            <a ng-href="#!/boards/{{board.id}}">
+                <div class="tile is-parent" >
+                    <article class="tile is-child box">
+                        <p class="title">{{board.title}}</p>
+                        <p class="subtitle">{{board.description}}</p>
+                    </article>
+                </div>
+            </a>
+        </div>
     </div>
 </div>
-  
-  
