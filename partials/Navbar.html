@@ -1,8 +1,13 @@
-<nav class="level" ng-controller="NavCtrl">
-  <a href="#!/images"><img src="../img/winterest.png" alt="Winterest Logo" width="150" height="50"></a>
-  <input class="input is-rounded" type="text" placeholder="Search..." ng-model="search.term">
-  <a class="link is-info nav-link" ng-click="">Login</a>
-  <a class="link is-info nav-link" href="#!/boards">Boards</a>      
-  <a class="link is-info nav-link" href="#!/newboard">Add Board</a>
-  <a class="link is-info nav-link" href="#!/newimage">Add Image</a>
-</nav>
+  <nav class="level" ng-controller="NavCtrl">
+    <a href=""><img src="../img/winterest.png" alt="Winterest Logo" width="150" height="50"></a>
+    <input class="input is-rounded" type="text" placeholder="Search..." ng-model="search.term">
+    <div ng-if="user">
+      <a class="link is-info nav-link" href="#!/boards">Boards</a>      
+      <a class="link is-info nav-link" href="#!/newboard">Add Board</a>
+      <a class="link is-info nav-link" href="#!/newimage">Add Image</a>
+      <a class="link is-info nav-link" ng-click="gtfo()">Logout</a>  
+    </div>
+    <div ng-if="!user">
+      <a class="link is-info nav-link" ng-click="login()">Login</a>
+    </div>
+  </nav>
