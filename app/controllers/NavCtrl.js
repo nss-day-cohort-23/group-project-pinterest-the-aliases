@@ -12,6 +12,10 @@ angular.module("Winterest").controller("NavCtrl", function ($scope, FilterFactor
         });
     };
 
+    $scope.goHome = () => {
+        $window.location.href = "#!/images";
+    };
+
 
     $scope.login = () => {
         AuthFactory.login()
